@@ -5,7 +5,7 @@
  */
 
 
-class Command 
+class electricOutletCommand 
 {
 
     public $nbPrise = 3;
@@ -18,22 +18,22 @@ class Command
 
 
 	private function allume($prise){
-		$result = shell_exec('/bin/bash /home/pi/prise/newkaku A '.$prise.' on');
-
+		$result = shell_exec('/bin/bash /home/pi/prise/command.sh A '.$prise.' on 1');
 	}
+	
 	private function eteind($prise){
-		$result = shell_exec('/bin/bash /home/pi/prise/newkaku A '.$prise.' off');
-
+		$result = shell_exec('/bin/bash /home/pi/prise/command.sh A '.$prise.' off 1');
 	}	
+	
 	private function allume_all($prise){
 		for($i = 1; $i <= 3; $i++){
-			$result = shell_exec('/bin/bash /home/pi/prise/newkaku A '.$i.' on');
+			$result = shell_exec('/bin/bash /home/pi/prise/command.sh A '.$i.' on 1');
 		}
 	}
 	
 	private function eteind_all($prise){
 		for($i = 1; $i <= 3; $i++){
-			$result = shell_exec('/bin/bash /home/pi/prise/newkaku A '.$i.' off');
+			$result = shell_exec('/bin/bash /home/pi/prise/command.sh A '.$i.' off 1');
 		}
 	}
 }
@@ -44,7 +44,7 @@ if(!isset($_GET['pass']))
 
 if($_GET['pass'] == '1933UDJg38@$SJ'){
 
-    $cmd = new Command();
+    $cmd = new electricOutletCommand();
 
     if(key_exists('allume',$_GET)){
         $cmd->exeCommand('allume',$_GET['prise']);
