@@ -14,3 +14,10 @@ Leave a comment i you change or add shizzle
 :)
 
 good luck, have fun
+
+
+     g++ -o newkaku newkaku.cpp -I/usr/local/include -L/usr/local/lib -lwiringPi
+
+now you can control the Action 433mhz remote flamingo wall socket
+./newkaku A 1 on
+./newkaku A 1 off
